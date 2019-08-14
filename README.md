@@ -88,4 +88,15 @@ sudo apt-add-repository -r ppa:graphics-drivers/ppa
 sudo apt update
 sudo ubuntu-drivers autoinstall
 sudo reboot
+nvidia-smi
+```
+## 기초 라이브러리 설치
+```
+sudo apt install git
+pip3 install matplotlib
+pip3 install pandas
+```
+## PyTorch 설치
+```
+pip3 install torch torchvision
 ```
