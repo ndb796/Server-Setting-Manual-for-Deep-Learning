@@ -22,7 +22,7 @@ python3
 * jupyter 환경 설정 파일 만들기
 ```
 jupyter notebook --generate-config
-sudo vi /home/ubuntu/.jupyter/jupyter_notebook_config.py
+sudo vi /home/{사용자명}/.jupyter/jupyter_notebook_config.py
 ```
 * jupyter 환경 설정하기
 ```
