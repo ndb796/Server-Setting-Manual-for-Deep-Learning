@@ -80,3 +80,12 @@ sudo systemctl status jupyter
 # Jupyter 서비스 재시작 방법
 sudo systemctl restart jupyter
 ```
+## 장치 환경 확인
+* 연결된 장치 확인: lspci -k
+## 드라이버 자동 설치
+```
+sudo apt-add-repository -r ppa:graphics-drivers/ppa
+sudo apt update
+sudo ubuntu-drivers autoinstall
+sudo reboot
+```
