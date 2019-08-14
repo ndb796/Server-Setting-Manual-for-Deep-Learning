@@ -64,7 +64,7 @@ Description=Jupyter Notebook Server
 
 [Service]
 Type=simple
-User={사용자명}
+User=root
 ExecStart=/usr/bin/sudo /usr/local/bin/jupyter-notebook --allow-root --config=/home/{사용자명}/.jupyter/jupyter_notebook_config.py
 
 [Install]
