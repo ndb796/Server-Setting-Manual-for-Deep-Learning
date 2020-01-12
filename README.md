@@ -115,4 +115,49 @@ pip3 install torch torchvision
 * PCIe x 16, PCIe x 8, PCIe x 4가 있을 때 PCIe x 4에만 그래픽 카드를 꽂으면 정상적으로 인식이 안 될 수 있음. (디스플레이가 무조건 First, Second Slot에만 있어야 하는 경우.)
 * PCIe v3 x 4는 대략 4GB/s의 속도를 가짐. 따라서 SATA와 비교했을 때 느리지는 않음.
 * 그래픽 카드의 크기와 PCIe 규격 등을 확인하여 물리적 간섭이 없도록 해야 함.
-
+## 기타 잡다한 내용들
+#### Pytorch 설치
+<pre>
+pip3 install torch torchvision
+</pre>
+#### 설치 완료 체크
+<pre>
+python3
+import torch
+torch.__version__
+torch.version.cuda
+torch.cuda.current_device()
+torch.cuda.device(0)
+torch.cuda.get_device_name(0)
+</pre>
+#### 관련 라이브러리 설치
+<pre>
+pip3 install matplotlib
+pip3 install pandas
+</pre>
+#### Cuda 설치(필요 시에 설치 진행)
+* Cuda: GPU의 병렬 프로그래밍 언어. Cuda가 적용된 딥 러닝 라이브러리가 cuDNN.
+* 최신 Cuda인 10.0을 설치함. 자신의 그래픽 카드가 이를 지원할 수 있는지 확인.
+<pre>
+wget https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_410.48_linux
+sudo sh cuda_10.0.130_410.48_linux
+</pre>
+* 확인: nvcc --version
+#### cuDNN 설치(필요 시에 설치 진행)
+* cuDNN은 엔비디아 CUDA 딥 뉴럴 네트워크 라이브러리. 기본적인 GPU 가속화 라이브러리 요소들을 포함.
+* cuDNN 다운로드: https://developer.nvidia.com/rdp/cudnn-download
+<pre>
+sudo tar -xzvf cudnn-10.0-linux-x64-v7.5.1.10.tgz 
+cd cuda
+sudo cp include/cudnn.h /usr/local/cuda/include
+sudo cp lib64/libcudnn* /usr/local/cuda/lib64
+sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
+cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
+</pre>
+#### 정상 동작 검사
+<pre>
+cp -r /usr/src/cudnn_samples_v7/ $HOME
+cd  $HOME/cudnn_samples_v7/mnistCUDNN
+make clean && make
+./mnistCUDNN
+</pre>
